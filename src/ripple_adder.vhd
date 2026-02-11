@@ -14,12 +14,57 @@ entity ripple_adder is
 end ripple_adder;
 
 architecture Behavioral of ripple_adder is
+    -- THIS COMPONENT MUST BE SINGLE BITS (STD_LOGIC)
+    component full_adder is
+        Port ( 
+            A    : in  STD_LOGIC;
+            B    : in  STD_LOGIC;
+            Cin  : in  STD_LOGIC;
+            S    : out STD_LOGIC;
+            Cout : out STD_LOGIC
+        );
+    end component full_adder;
 
-    -- Declare components here
-    
-    -- Declare signals here
+    -- Signal declarations
+    signal w_carry : std_logic_vector(2 downto 0);
 
 begin
 
+    full_adder_0: full_adder
+    port map(
+        A     => A(0),
+        B     => B(0),
+        Cin   => Cin,
+        S     => S(0),
+        Cout  => w_carry(0)
+    );
+
+    full_adder_1: full_adder
+    port map(
+        A     => A(1),
+        B     => B(1),
+        Cin   => w_carry(0),
+        S     => S(1),
+        Cout  => w_carry(1)
+    );
+
+    full_adder_2: full_adder
+    port map(
+        A     => A(2),
+        B     => B(2),
+        Cin   => w_carry(1),
+        S     => S(2),
+        Cout  => w_carry(2)
+    );
+
+    full_adder_3: full_adder
+    port map(
+        A     => A(3),
+        B     => B(3),
+        Cin   => w_carry(2),
+        S     => S(3),
+        Cout  => Cout
+    );
 
 end Behavioral;
+
