@@ -51,7 +51,7 @@ begin
        -- TODO, a few other test cases\
        w_addends <= x"17"; w_Cin <= '0'; wait for 10 ns;
             assert (w_sum = x"8" and w_Cout = '0') report "bad 7+1" severity failure;
-	   w_addends <= x"1F"; w_Cin <= '0'; wait for 10ns;
+	   w_addends <= x"1F"; w_Cin <= '0'; wait for 10 ns;
 	       assert(s_sum = x"0" and w_Cout = '1') report "bad 7+1" severity failure;
 	   w_addends <= x"0F"; w_Cin <= '1'; wait for 10 ns;
 	       assert (w_sum = x"0" and w_Cout = '1') report "bad 10+5" severity failure;
@@ -60,7 +60,7 @@ begin
        -- TODO, a few other test cases\
        w_addends <= x"43"; w_Cin <= '0'; wait for 10 ns;
             assert (w_sum = x"7" and w_Cout = '0') report "bad 7+1" severity failure;
-	   w_addends <= x"7E"; w_Cin <= '0'; wait for 10ns;
+	   w_addends <= x"7E"; w_Cin <= '0'; wait for 10 ns;
 	       assert(s_sum = x"5" and w_Cout = '1') report "bad 7+1" severity failure;
 	   w_addends <= x"00"; w_Cin <= '1'; wait for 10 ns;
 	       assert (w_sum = x"0" and w_Cout = '0') report "bad with zeros" severity failure;
